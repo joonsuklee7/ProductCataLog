@@ -1,0 +1,10 @@
+﻿
+    #addProductModalModal .modal-header {
+        background-color: #F37D20;
+        color: white;
+    }
+    #addProductModalModal .modal-body {
+    line-height: 2.0;
+    white-space: normal;
+    }
+    

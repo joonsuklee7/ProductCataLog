@@ -1,0 +1,68 @@
+﻿<div class="container-fluid table-responsive">
+    <table id="productList" class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th width="33%" class="text-center">Name</th>
+            <th width="33%" class="text-center">Description </th>
+            <th width="33%" class="text-center">Quantity available </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in filteredproducts = (products | filter:searchTerm)">
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p ng-hide="(filteredproducts.length)">No product is availabe!</p>
+
+    <div class="text-center">
+        <button class="btn text-center" ng-click="openModalToAdd()">add</button>
+    </div>
+    <!--modal starts-->
+    <div class="modal" id="addProductModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Product</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-sm-12">
+                            <div class="col-sm-4" style="padding:2px">
+                                <input id="search" class="form-control" ng-model="newProduct.name" type="text" placeholder="product">
+                            </div>
+                            <div class="col-sm-4" style="padding:2px">
+                                <input class="form-control" ng-model="newProduct.description" type="text" placeholder="description">
+                            </div>
+                            <div class="col-sm-4" style="padding:2px">
+                                <input class="form-control" ng-model="newProduct.quantity" type="number"  min="0" placeholder="number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-sm-12">
+                            <div class="text-center">
+                                <button class="btn btn-primary"
+                                        data-dismiss="modal"
+                                        ng-click="addProduct(newProduct)"
+                                        type="button">
+                                    Save
+                                </button>
+                                <button class="btn btn-default"
+                                        ng-click="cancelModal()"
+                                        type="button">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal ends-->
+
+</div>
+
